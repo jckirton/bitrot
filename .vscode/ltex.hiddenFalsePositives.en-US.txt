@@ -1,0 +1,2 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QBitrot brain scripts will not be allowed to run any non-bitrot script - trust or otherwise.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QBitrot Gameplay\nGameplay Outline\nGameplay Notes \\& Decisions\nBitrot has favorites\nSpeed is appreciated, and mandatory\nBitrot is not forgiving\nThis is a private matter\nYou are not safe when attacking\\E$"}

@@ -253,6 +253,8 @@ class Game:
         for player in self.players:
             player.place_piece(self.board, initial_moves[self.players.index(player)])
 
+        input(f"{self.board}\n\nPress enter to start game.")
+
         while self.game_on:
             for p in self.players:
                 game_manager.do_turn(self.board, p)
@@ -273,16 +275,15 @@ class Game:
 
 
 def play():
-    from os import system
+    # from os import system
 
     game = Game(
         Board(),
         [Player("0", "Defender (0)"), Player("1", "Attacker (1)")],
     )
 
-    system("clear")
-
-    input("Press enter to start game.\n")
+    # system("clear")
+    print("\n" * 20)
 
     game.play()
 

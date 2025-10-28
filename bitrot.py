@@ -243,8 +243,15 @@ class Game:
                 sleep(1)
 
     def play(self):
+        from random import sample
+
         game_manager = self.GameManager()
         self.game_on = True
+
+        initial_moves = sample(list(range(1, 10)), len(self.players))
+
+        for player in self.players:
+            player.place_piece(self.board, initial_moves[self.players.index(player)])
 
         while self.game_on:
             for p in self.players:

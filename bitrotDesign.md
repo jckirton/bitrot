@@ -21,8 +21,6 @@ Python implementation at <https://github.com/jckirton/CompleteP3/blob/master/gam
     - Player gets three of their pieces in a row. (standard tic-tac-toe win condition)
     - loc rotation
 - 1v1 only, balance doesn't support multiple players in one team.
-- *Every user has bitrot.*
-  - This is because bitrot is a simpler game than BINMAT, and will serve to make early-game pvp more interesting and interactive by giving everyone a form of active defense.
 - No ante.
 
 ### Game state data format

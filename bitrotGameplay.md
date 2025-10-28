@@ -5,6 +5,7 @@ This document will outline some key facts and decisions regarding the gameplay o
 - [Bitrot Gameplay](#bitrot-gameplay)
   - [Gameplay Outline](#gameplay-outline)
     - [Gameplay loop](#gameplay-loop)
+    - [Win conditions](#win-conditions)
   - [Gameplay Notes \& Decisions](#gameplay-notes--decisions)
     - [Bitrot has favorites](#bitrot-has-favorites)
     - [Speed is appreciated, and mandatory](#speed-is-appreciated-and-mandatory)
@@ -34,6 +35,17 @@ A turn of bitrot and its resolution has the following process:
 - Check win condition
 
 Turns alternate between attacker and defender until the game ends.
+
+### Win conditions
+
+A player wins when they manage to get three active pieces in a row on the board at the end of their turn's resolution. Whichever player owns those pieces is declared the winner.
+
+As the board cannot be filled, there is no way to tie via traditional means of the board filling. Instead, a tie occurs if the defending system rotates during the bitrot game.
+
+In summary:
+
+- A player wins by getting three of their pieces in a row.
+- A tie occurs if the defending system rotates before a winner is determined.
 
 ## Gameplay Notes & Decisions
 
@@ -75,6 +87,6 @@ If you try to breach a user already engaged in a defending game of bitrot, the l
 
 While it may be a private matter, you can still crash the party.
 
-In the event of the attacker being breached, they will be immediately removed from the game, and the game will resole like a tie.
+In the event of the attacker being breached, they will be immediately removed from the game, and the game will resolve like a tie.
 
 Similar to BINMAT, those engaged in offensive bitrot games will be unable to defend themselves with bitrot or BINMAT, resulting in them being breached when a game of bitrot would otherwise begin.

@@ -3,8 +3,13 @@
 This document will outline some key facts and decisions regarding the gameplay of bitrot, and how they relate to balance and implementation.
 
 - [Bitrot Gameplay](#bitrot-gameplay)
-  - [Gameplay Outline](#gameplay-outline)
+  - [Gameplay Description](#gameplay-description)
     - [Gameplay loop](#gameplay-loop)
+    - [Players](#players)
+    - [The board](#the-board)
+    - [Pieces \& aging](#pieces--aging)
+      - [Pieces](#pieces)
+      - [Aging](#aging)
     - [Win conditions](#win-conditions)
   - [Gameplay Notes \& Decisions](#gameplay-notes--decisions)
     - [Bitrot has favorites](#bitrot-has-favorites)
@@ -13,7 +18,7 @@ This document will outline some key facts and decisions regarding the gameplay o
     - [This is a private matter](#this-is-a-private-matter)
     - [You are not safe when attacking](#you-are-not-safe-when-attacking)
 
-## Gameplay Outline
+## Gameplay Description
 
 The setup and gameplay of bitrot goes as follows:
 
@@ -35,6 +40,72 @@ A turn of bitrot and its resolution has the following process:
 - Check win condition
 
 Turns alternate between attacker and defender until the game ends.
+
+### Players
+
+Bitrot has two players: the attacker and defender.
+
+The attacker plays first.
+
+The attacker's pieces are represented by `0`, and the defender's are represented with `1`
+
+### The board
+
+The bitrot board is identical to a tic-tac-toe board: a 3x3 grid of spaces.
+
+The board layout would be as follows:
+
+```txt
+7    |8    |9
+     |     |   
+     |     |
+-----|-----|-----
+4    |5    |6
+     |     |   
+     |     |
+-----|-----|-----
+1    |2    |3
+     |     |   
+     |     |     
+```
+
+Players reference a position on the board by the number in the top-left corner of that space.
+
+For example, the attacker places a piece in position 7. The board now looks like:
+
+```txt
+7    |8    |9
+  0  |     |   
+     |     |
+-----|-----|-----
+4    |5    |6
+     |     |   
+     |     |
+-----|-----|-----
+1    |2    |3
+     |     |   
+     |     |     
+```
+
+### Pieces & aging
+
+#### Pieces
+
+Pieces in bitrot have two components: ownership, and age.
+
+Ownership refers to who owns the piece (attacker or defender), and determines how the piece is represented.
+
+Age refers to how long the piece has been on the board, and determines what color the piece is represented with.
+
+#### Aging
+
+Pieces in bitrot have a lifetime, and decay away after being on the board for a certain amount time.
+
+Pieces age as part of their owner's turn: the attacker's turn will only age the attacker's pieces, and not age the defender's pieces
+
+Pieces remain on the board for three of its owner's turns, and disappears as part of the fourth turn.
+
+In effect, this means a player can only have up to three of their pieces on the board at any point in time, but cannot replace a disappearing piece.
 
 ### Win conditions
 

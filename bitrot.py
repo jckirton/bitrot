@@ -22,15 +22,21 @@ class InvalidMove(Exception):
     pass
 
 
-def input_with_timeout(prompt: str, timeout: int | float, error=TimeoutError):
+def input_with_timer(prompt: str, timer: int | float, error=TimeoutError):
     import select
     from sys import stdout, stdin
+    import time
 
     stdout.write(prompt)
     stdout.flush()
-    ready, _, _ = select.select([stdin], [], [], timeout)
+
+    start = time.time()
+    ready, _, _ = select.select([stdin], [], [], timer)
     if ready:
-        return stdin.readline().rstrip("\n")  # expect stdin to be line-buffered
+        entered = time.time()
+        usrInput = stdin.readline().rstrip("\n")  # expect stdin to be line-buffered
+        time.sleep((start + 5) - entered)
+        return usrInput
     else:
         stdout.write("\n")
         stdout.flush()
@@ -188,7 +194,8 @@ class Game:
                     print("\n" * 20)
                     print(board)
                     try:
-                        move = input_with_timeout(f"\n{player.id}, choose a space: ", 5)
+                        move = input_with_timer(f"\n{player.id}, choose a space: ", 5)
+                        print(move)
                         move = int(move[-1])
                     except ValueError:
                         raise InvalidMove(f"move '{move}' is not a number")
@@ -243,12 +250,14 @@ class Game:
                 sleep(1)
 
     def play(self):
-        from random import sample
+        from random import shuffle
 
         game_manager = self.GameManager()
         self.game_on = True
 
-        initial_moves = sample(list(range(1, 10)), len(self.players))
+        initial_moves = list(range(1, 10))
+
+        shuffle(initial_moves)
 
         for player in self.players:
             player.place_piece(self.board, initial_moves[self.players.index(player)])

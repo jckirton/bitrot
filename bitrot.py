@@ -281,6 +281,12 @@ class Game:
                 if self.replay():
                     self.game_on = True
                     game_manager.reset_board(self.board)
+                    initial_moves = list(range(1, 10))
+                    shuffle(initial_moves)
+                    for player in self.players:
+                        player.place_piece(
+                            self.board, initial_moves[self.players.index(player)]
+                        )
 
 
 def play():

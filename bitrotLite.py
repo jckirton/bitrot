@@ -168,7 +168,9 @@ class Game:
                 try:
                     print("\n" * 100)
                     print(board)
-                    move = int(input(f"\n{player.id}, choose a space: "))
+                    move = int(
+                        input(f"\n{player.id} ({player.marker}), choose a space: ")
+                    )
                     # print(board.state[move])
                     if board.state[move] is not None:
                         print("Space taken, choose another.")

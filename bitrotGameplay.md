@@ -57,16 +57,16 @@ The board layout would be as follows:
 
 ```txt
 7    |8    |9
-     |     |
-     |     |
+     |     |     
+     |     |     
 -----|-----|-----
 4    |5    |6
-     |     |
-     |     |
+     |     |     
+     |     |     
 -----|-----|-----
 1    |2    |3
-     |     |
-     |     |
+     |     |     
+     |     |     
 ```
 
 Players reference a position on the board by the number in the top-left corner of that space.
@@ -75,16 +75,16 @@ For example, the attacker places a piece in position 7. The board now looks like
 
 ```txt
 7    |8    |9
-  0  |     |
-     |     |
+  0  |     |     
+     |     |     
 -----|-----|-----
 4    |5    |6
-     |     |
-     |     |
+     |     |     
+     |     |     
 -----|-----|-----
 1    |2    |3
-     |     |
-     |     |
+     |     |     
+     |     |     
 ```
 
 ### Pieces & aging
